@@ -25,7 +25,7 @@ METODO_CARTEL = """
 |  Para aproximar el valor del vector x se descompone            |
 |  la matriz A en dos partes:                                    |
 |                                                                |
-|  L -> Triangular inferior, con unos en su diagonal principal   |                                                 |
+|  L -> Triangular inferior, con unos en su diagonal principal   |
 |  U -> Triangular superior                                      |
 |                                                                |
 |  Se descompone el sistema en dos partes, tal que:              |
@@ -35,10 +35,9 @@ METODO_CARTEL = """
 |   |__          los valores en la siguiente con sustitución     |
 |                hacia atrás.                                    |
 |________________________________________________________________|
-
                 """
 
-NUMERO_OPERACIONES_CARTEL = """
+NUMERO_OPERACIONES_CARTEL = """\033[F
  ________________________________________________________________
 |                                                                |
 |                NUMERO DE OPERACIONES ELEMENTALES               |
@@ -54,10 +53,9 @@ NUMERO_OPERACIONES_CARTEL = """
 |  -> Por cada elemento igual a uno se reduce una vez la         |
 |     cantidad de multiplicaciones necesarias.                   |
 |________________________________________________________________|
-
                             """
 
-SUSTITUCION_ADELANTE_CARTEL = """
+SUSTITUCION_ADELANTE_CARTEL = """\033[F
  ________________________________________________________________
 |                                                                |
 |                   SUSTITUCION HACIA ADELANTE                   |
@@ -93,7 +91,7 @@ SUSTITUCION_ADELANTE_CARTEL = """
 |________________________________________________________________|
                             """
 
-SUSTITUCION_ATRAS_CARTEL = """
+SUSTITUCION_ATRAS_CARTEL = """\033[F
  ________________________________________________________________
 |                                                                |
 |                     SUSTITUCION HACIA ATRAS                    |
@@ -126,17 +124,17 @@ print(' MATRIZ A:')
 imprimir_matriz(A_matrix)
 
 print(' VECTOR B:')
-print(f'  {str(B_vector)}')
+print(f'  {str(B_vector)}\n')
 
 # RESOLUCIÓN DEL SISTEMA
 x = lu(A_matrix, B_vector)
-print(f" Solución final: {np.round(x, decimals = 2)}")
-print(f" Evaluación de la solución en A: {np.round(np.sum(A_matrix * x, axis = 1), decimals = 2)}")
+print(f"\n Solución final: {np.round(x, decimals = 2)}")
+print(f" Evaluación de la solución en A: {np.round(np.sum(A_matrix * x, axis = 1), decimals = 2)}\n")
 
 # TOTAL DE OPERACIONES ELEMENTALES EN EL PEOR CASO
 print(NUMERO_OPERACIONES_CARTEL)
 total_y_ops = calculador_op_max_adelante(A_matrix)
 total_x_ops = calculador_op_max_atras(A_matrix)
-print(f"{SUSTITUCION_ADELANTE_CARTEL}\n Número máximo de operaciones para despejar el vector y: {total_y_ops}")
-print(f"{SUSTITUCION_ATRAS_CARTEL}\n Número máximo de operaciones para despejar el vector x: {total_x_ops}")
-print(f"\nTOTAL DE OPERACIONES ELEMENTALES EN EL PEOR CASO: {total_y_ops + total_x_ops}\n")
+print(f"{SUSTITUCION_ADELANTE_CARTEL}\n Número máximo de operaciones para despejar el vector y: {total_y_ops}\n")
+print(f"{SUSTITUCION_ATRAS_CARTEL}\n Número máximo de operaciones para despejar el vector x: {total_x_ops}\n")
+print(f"\n TOTAL DE OPERACIONES ELEMENTALES EN EL PEOR CASO: {total_y_ops + total_x_ops}\n")

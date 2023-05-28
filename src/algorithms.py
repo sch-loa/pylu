@@ -2,13 +2,13 @@ import numpy as np
 import pandas as pd
 import scipy as sp
 
-FACTORIZACION_CARTEL = """
+FACTORIZACION_CARTEL = """\033[F
  _____________________
 |                     |  
 | FACTORIZACION DE LU |
 |_____________________|
                         """
-RESOLUCION_CARTEL = """
+RESOLUCION_CARTEL = """\033[F
  ________________________________
 |                                |  
 | RESOLUCION DE LA FACTORIZACION |
