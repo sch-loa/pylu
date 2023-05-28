@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-import re
 import scipy as sp
 
 FACTORIZACION_CARTEL = """
@@ -16,6 +15,7 @@ RESOLUCION_CARTEL = """
 |________________________________|
                         """
 
+# Función principal del algoritmo de lu
 def lu(A, B):
     L, U = calculador_LU(A)
     dict_LU = {' MATRIZ L:': L,' MATRIZ U:': U}
@@ -63,5 +63,5 @@ def imprimir_matrices_formateadas(titulo, dict_formateado):
 # Imprime matriz columna por columna
 def imprimir_matriz(matrix):
     for row in matrix:
-        print('  ' + str(np.round(row, decimals = 2)))
+        print(f'  {np.round(row, decimals = 2)}')
     print()
