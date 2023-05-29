@@ -17,12 +17,14 @@ RESOLUCION_CARTEL = """\033[F
 
 # Función principal del algoritmo de lu
 def lu(A, B):
-    L, U = calculador_LU(A)
+    L, U, B_permutado = calculador_LU(A, B)
     dict_LU = {' MATRIZ L:': L,' MATRIZ U:': U}
 
     imprimir_matrices_formateadas(FACTORIZACION_CARTEL, dict_LU)
+    print(' VECTOR B:')
+    print(f'  {str(B_permutado)}\n')
 
-    y = calculador_vector(L,B)
+    y = calculador_vector(L, B_permutado)
     x = calculador_vector(U, y)
 
     print(RESOLUCION_CARTEL)
@@ -31,13 +33,16 @@ def lu(A, B):
     return x
 
 # Calcula y retorna las matrices L y U
-def calculador_LU(A):
-    _, L, U = sp.linalg.lu(A)
-    return (L, U)
+# Devuelve el nuevo vector B con distinto orden
+# en caso de que haya habido permutación
+def calculador_LU(A, B):
+    piv, L, U = sp.linalg.lu(A)
+    B_permutado = piv @ B
+    return (L, U, B_permutado)
 
 # Calcula el valor de la incognita en la ecuación matricial
-def calculador_vector(matriz, resultado):
-    return np.linalg.solve(matriz, resultado)
+def calculador_vector(matriz, vector):
+    return np.linalg.solve(matriz, vector)
 
 # Calcula el número máximo de operaciones elementales a realizar
 # para despejar la matriz dada utilizando el método de

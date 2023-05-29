@@ -22,7 +22,8 @@ METODO_CARTEL = """
 |                        FUNCIONAMIENTO DEL ALGORITMO                        |
 |____________________________________________________________________________|
 |                                                                            |
-|  Para aproximar el valor de x se divide la matriz A en dos partes:         |
+|  Para aproximar el valor de x se transforma la matriz A en el producto de  |
+|  dos matrices:                                                             |
 |                                                                            |
 |  L -> Triangular inferior, con unos en su diagonal principal               |
 |  U -> Triangular superior                                                  |
@@ -112,8 +113,8 @@ SUSTITUCION_ATRAS_CARTEL = """\033[F
 |____________________________________________________________________________|
                             """
 
-A_matrix = np.array([[3,-1,-1],[-1,3,1],[2,1,4]])
-B_vector = np.array([1,3,7])
+A_matrix = np.array([[3,-4,5,-7],[1,2,-4,5],[2,-4,5,-1],[3,-1,7,5]], )
+B_vector = np.array([19,31,21,10])
 
 is_square(A_matrix) # Verifico que la matriz sea cuadrada
 # Verifico que los vectores sean de tamaños equivalentes
