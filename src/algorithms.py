@@ -21,8 +21,6 @@ def lu(A, B):
     dict_LU = {' MATRIZ L:': L,' MATRIZ U:': U}
 
     imprimir_matrices_formateadas(FACTORIZACION_CARTEL, dict_LU)
-    print(' VECTOR B:')
-    print(f'  {str(B_permutado)}\n')
 
     y = calculador_vector(L, B_permutado)
     x = calculador_vector(U, y)
