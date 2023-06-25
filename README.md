@@ -7,3 +7,4 @@ Math project; Its purpose is to solve a system of linear equations using the Jac
   - equation 1.2.1
   - matplotlib 3.7.1
   - pandas 2.0.2
+  - scipy 1.10.1
