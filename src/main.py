@@ -1,5 +1,5 @@
 import numpy as np
-from algorithms import lu, imprimir_matriz, calculador_op_max_adelante, calculador_op_max_atras
+from algorithms import lu, imprimir_matriz, calculador_op_max_adelante, calculador_op_max_atras, leer_matriz, leer_vector
 from exceptions import is_square, is_column_size_different, is_lu_operable
 
 METODO_CARTEL = """
@@ -12,11 +12,7 @@ METODO_CARTEL = """
 |  |_ Loana Abril Schleich Garcia.                                           |
 |                                                                            |
 |  SISTEMA DE ECUACIONES A EVALUAR:                                          |
-|  |_ Ax = B, siendo:                      ____________        ___           |
-|                                     A = |  3  -1  -1 |  B = | 1 |          |
-|                                         | -1   3   1 |      | 3 |          |
-|                                         |  2   1   4 |      | 7 |          |
-|                                         |____________|      |___|          |
+|  |_ Ax = B, siendo:                                                        |
 |____________________________________________________________________________|
 |                                                                            |
 |                        FUNCIONAMIENTO DEL ALGORITMO                        |
@@ -113,13 +109,20 @@ SUSTITUCION_ATRAS_CARTEL = """\033[F
 |____________________________________________________________________________|
                             """
 
-A_matrix = np.array([[3,-4,5,-7],[1,2,-4,5],[2,-4,5,-1],[3,-1,7,5]], )
-B_vector = np.array([19,31,21,10])
+#A_matrix = np.array([[3,-4,5,-7],[1,2,-4,5],[2,-4,5,-1],[3,-1,7,5]])
+#B_vector = np.array([19,31,21,10])
+
+n = int(input('Cantidad de filas/columnas de la matriz: '))
+print('\nMATRIZ A:')
+A_matrix = leer_matriz(n,n)
+print('\nVECTOR B:')
+B_vector = leer_vector(n)
 
 is_square(A_matrix) # Verifico que la matriz sea cuadrada
 # Verifico que los vectores sean de tamaños equivalentes
 is_column_size_different(A_matrix, B_vector)
 is_lu_operable(A_matrix) # Verifico que la determinante de cada submatriz dentro de A sea != 0
+print('\nLa determinante de cada submatriz de A es nula, es posible operar con el método de LU')
 
 print(METODO_CARTEL)
 print(' MATRIZ A:')

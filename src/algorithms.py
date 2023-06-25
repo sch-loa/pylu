@@ -68,3 +68,20 @@ def imprimir_matriz(matrix):
     for row in matrix:
         print(f'  {np.round(row, decimals = 2)}')
     print()
+
+def leer_matriz(filas, columnas):
+    matriz = list()
+    for i in range(1, filas + 1):
+        fila = list()
+        for j in range(1, columnas + 1):
+            fila.append(float(input(f'|_ fila {i}, columna {j}: ')))
+        if(i != filas):
+            print('|')
+        matriz.append(fila)
+    return np.array(matriz)
+            
+def leer_vector(columnas):
+    vector = list()
+    for i in range(1, columnas + 1):
+        vector.append(float(input(f'|_ columna {i}: ')))
+    return np.array(vector)
